@@ -2,6 +2,30 @@
 
 Hệ thống RAG tra cứu 9.159 điều luật từ 65 Bộ luật/Luật Việt Nam.
 
+## Hướng dẫn cài đặt
+
+**Bước 1**: Clone repo:
+
+```bash
+git clone https://github.com/shirmtry/htk_no1.git
+cd htk_no1
+```
+
+**Bước 2**: Tải file `qwen2.5-3b-instruct-q4_k_m.gguf` (~2,1 GB) từ tab [Releases](https://github.com/shirmtry/htk_no1/releases/tag/v1.0.0) và bỏ vào thư mục `models/`.
+
+**Bước 3**: Tải file `faiss_index_new_v1.zip` từ tab Releases, giải nén và bỏ vào thư mục `data/` (thành `data/faiss_index_new_v1/`). Tải thêm file `HUYTKING.cleaned.jsonl` từ Releases và bỏ vào thư mục `data/` — đây là dữ liệu gốc bắt buộc để chạy.
+
+**Bước 4**: Cài đặt requirements và chạy:
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Mở http://localhost:8501. Đánh giá tự động: `python -X utf8 run_eval.py --phase=full --tier=all --config=improved`.
+
 ## Cài đặt
 
 ```bash
