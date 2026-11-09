@@ -1,0 +1,6 @@
+round,test_name,metric,before,after,delta,status,note
+improved,TC001,case_score,2.6316,9.9000,+7.2684,FIXED,T1 di chuc hop phap (Dieu 630)
+improved,TC002,case_score,6.1045,10.0000,+3.8955,FIXED,T2 thu tuc cong chung UBND xa (58;630;635)
+improved,TC003,case_score,2.2278,8.4227,+6.1949,FIXED,T3 nguoi thua ke khong phu thuoc di chuc (644)
+improved,TC004,case_score,4.6826,10.0000,+5.3174,FIXED,T4 cross-law BLDS 630/635 + LC 58/61
+improved,TC005,case_score,4.4812,10.0000,+5.5188,FIXED,T5 cong bo di chuc + 644 (647;644)

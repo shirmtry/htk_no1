@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+logs/
+*.log
+data/faiss_index_new_v1/
+models/*.gguf
+.venv/
+models/
+data/
+faiss_index*
+TEMP/
+.env
+*.gguf

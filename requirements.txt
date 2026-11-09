@@ -1,0 +1,9 @@
+streamlit>=1.32.0
+langchain-community>=0.2.0
+langchain-huggingface>=0.1.0
+langchain-core>=0.3.0
+langchain-classic>=0.1.0
+llama-cpp-python>=0.2.79
+sentence-transformers>=2.7.0
+faiss-cpu>=1.8.0
+rank-bm25>=0.2.2

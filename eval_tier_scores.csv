@@ -1,0 +1,6 @@
+tier,avg_score,max_score,pass_threshold,status,common_errors,note
+1,9.8802,10.0000,6.0,PASS,none,"score = avg(citation_f1*5 + rouge_l*3 + step_completeness*2), gom ca case refuse"
+2,9.9405,10.0000,6.0,PASS,none,"score = avg(citation_f1*5 + rouge_l*3 + step_completeness*2), gom ca case refuse"
+3,9.6246,10.0000,6.0,PASS,none,"score = avg(citation_f1*5 + rouge_l*3 + step_completeness*2), gom ca case refuse"
+4,10.0000,10.0000,6.0,PASS,none,"score = avg(citation_f1*5 + rouge_l*3 + step_completeness*2), gom ca case refuse"
+5,9.8076,10.0000,6.0,PASS,none,"score = avg(citation_f1*5 + rouge_l*3 + step_completeness*2), gom ca case refuse"

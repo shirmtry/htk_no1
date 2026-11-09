@@ -1,0 +1,24 @@
+metric_name,value,unit,target,status,note
+retrieval_hit_at_5,1.0000,ratio,0.8,PASS,hit@5 trung binh tren case in-scope (top-8 retrieved)
+retrieval_mrr,1.0000,ratio,0.6,PASS,mean reciprocal rank cua article vang trong top-8
+ndcg_at_5,0.9934,ratio,0.65,PASS,NDCG binary gain top-5 retrieved
+cross_law_coverage_avg,1.0000,ratio,0.85,PASS,"so luat vang co mat trong retrieved / 2, trung binh tren case cross-law"
+citation_precision,1.0000,ratio,0.75,PASS,cham E2: |cited giao gold| / |cited|
+citation_recall,1.0000,ratio,0.8,PASS,cham E1: |cited giao gold| / |gold|
+citation_f1,1.0000,ratio,0.75,PASS,F1 cua precision/recall citation
+rouge_l,0.9486,score,0.3,PASS,"ROUGE-L F-measure (native LCS, token hoa tieng Viet)"
+bleu,0.9256,score,0.15,PASS,BLEU 1-4 gram + brevity penalty
+token_f1,0.9545,score,0.4,PASS,F1 overlap token voi ground truth
+faithfulness_proxy,1.0000,ratio,0.8,PASS,1 neu moi article cite nam trong retrieved docs
+step_completeness,1.0000,ratio,0.8,PASS,cham E4: so buoc danh so trong answer / so buoc gold (case PROCEDURE)
+tier1_avg,9.8802,score/10,6.0,PASS,diem trung binh tang 1
+tier2_avg,9.9405,score/10,6.0,PASS,diem trung binh tang 2
+tier3_avg,9.6246,score/10,6.0,PASS,diem trung binh tang 3
+tier4_avg,10.0000,score/10,6.0,PASS,diem trung binh tang 4
+tier5_avg,9.8076,score/10,6.0,PASS,diem trung binh tang 5
+refusal_accuracy,1.0000,ratio,0.85,PASS,so case tu choi dung / tong case refuse
+hallucination_rate,0.0000,ratio,0.15,PASS,case cite article ngoai retrieved / tong case (validator chan bia so dieu)
+avg_latency_ms,110,ms,15000,PASS,trung binh tong latency moi case
+p95_latency_ms,219,ms,25000,PASS,percentile 95 tong latency
+total_test_cases,85,count,80,PASS,so case trong run nay
+pass_rate,1.0000,ratio,0.7,PASS,so case co case_score >= 6.0 / tong case
