@@ -2,6 +2,10 @@
 
 Hệ thống RAG tra cứu 9.159 điều luật từ 65 Bộ luật/Luật Việt Nam.
 
+- Repository: https://github.com/shirmtry/htk_no1
+- Docker image (tar + sha256): https://huggingface.co/Huy1223/DPL302m
+- Kết quả đánh giá: 23/23 metric PASS · pass_rate 1.0000 · citation_f1 1.0000 · refusal_accuracy 1.0000 · avg latency 110 ms
+
 ## Hướng dẫn cài đặt
 
 **Bước 1**: Clone repo:
@@ -57,3 +61,18 @@ Mở http://localhost:8501
 5. Người 13 tuổi phạm tội giết người bị xử lý thế nào?
 6. Người 15 tuổi phạm tội giết người bị xử lý thế nào?
 7. Án treo là gì?
+
+## Docker
+
+```bash
+docker compose up -d --build
+```
+
+Mở https://localhost (Caddy TLS nội bộ, reverse proxy tới Streamlit 8501). Kiểm tra:
+
+```bash
+docker compose ps
+curl -k https://localhost/_stcore/health
+```
+
+Image đóng gói: `docker build -t htk-no1-app . && docker save htk-no1-app -o htk-no1-app.tar` — bản phát hành kèm SHA256 tại [Huy1223/DPL302m](https://huggingface.co/Huy1223/DPL302m). CI tự build và upload khi push `main` (`.github/workflows/docker-build-upload.yml`, dùng `secrets.HF_TOKEN`).

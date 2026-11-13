@@ -47,7 +47,7 @@ Log chạy: `[DEMO] Xác nhận 10/10 câu trả lời có caption ⏱️`.
 
 - Raw: `demo/videos/page@07ed41fca13c397acb0e9514a6afea46.webm` (11.773 KB, Playwright ghi trực tiếp phiên chạy).
 - Chuyển đổi: `ffmpeg -i <webm> -c:v libx264 -crf 23 -pix_fmt yuv420p -movflags +faststart demo/demo.mp4`.
-- Kết quả: `demo/demo.mp4` 2.603 KB, ~2 phút (toàn bộ 10 câu hỏi, gồm cả câu trả lời chậm nhất ~1m25s của fallback LLM).
+- Kết quả: `demo/demo.mp4` 2.602.975 B, 157,6 giây (toàn bộ 10 câu hỏi, gồm cả câu trả lời chậm nhất ~1m25s của fallback LLM).
 
 ## 4. Ảnh Docker
 
