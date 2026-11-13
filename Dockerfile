@@ -10,8 +10,9 @@ COPY requirements.txt .
 RUN pip install --upgrade pip && pip install --index-url https://download.pytorch.org/whl/cpu torch
 RUN CMAKE_ARGS="-DLLAMA_NATIVE=ON" pip install -r requirements.txt
 COPY app.py run_eval.py ./
-COPY data/ ./data/
-COPY models/ ./models/
+# data/ + models/ tải từ GitHub Release và mount read-only qua docker-compose;
+# trong repo 2 thư mục này bị .gitignore nên chỉ tạo sẵn để build được trên CI.
+RUN mkdir -p ./data ./models
 EXPOSE 8501
 HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
     CMD curl -fsS http://localhost:8501/_stcore/health || exit 1
