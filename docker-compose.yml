@@ -1,0 +1,31 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: htk-caddy
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+    networks: [htk_net]
+  web:
+    build: { context: ., dockerfile: Dockerfile }
+    container_name: htk-web
+    restart: unless-stopped
+    expose: ["8501"]
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    networks: [htk_net]
+volumes: { caddy_data: {}, caddy_config: {} }
+networks: { htk_net: { driver: bridge } }

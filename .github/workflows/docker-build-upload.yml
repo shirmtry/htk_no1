@@ -1,0 +1,29 @@
+name: Build and Upload Docker Image to Hugging Face
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t htk-no1-app .
+      - name: Save image
+        run: docker save htk-no1-app -o htk-no1-app.tar
+      - name: Compute SHA256
+        run: sha256sum htk-no1-app.tar > htk-no1-app.tar.sha256
+      - name: Install HF Hub
+        run: pip install huggingface_hub
+      - name: Upload to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python -c "
+          import os
+          from huggingface_hub import HfApi
+          api = HfApi()
+          api.upload_file(path_or_fileobj='htk-no1-app.tar', path_in_repo='htk-no1-app.tar', repo_id='Huy1223/DPL302m', token=os.environ['HF_TOKEN'], repo_type='model')
+          api.upload_file(path_or_fileobj='htk-no1-app.tar.sha256', path_in_repo='htk-no1-app.tar.sha256', repo_id='Huy1223/DPL302m', token=os.environ['HF_TOKEN'], repo_type='model')
+          "

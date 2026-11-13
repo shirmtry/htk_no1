@@ -41,3 +41,5 @@ TEMP/
 # --- Thư mục kết quả harness test.py (runtime, không commit) ---
 eval_out/
 eval_out_agg/
+demo/videos/
+htk_no1_submission/
