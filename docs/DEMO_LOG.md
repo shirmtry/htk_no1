@@ -49,13 +49,15 @@ Log chạy: `[DEMO] Xác nhận 10/10 câu trả lời có caption ⏱️`.
 - Chuyển đổi: `ffmpeg -i <webm> -c:v libx264 -crf 23 -pix_fmt yuv420p -movflags +faststart demo/demo.mp4`.
 - Kết quả: `demo/demo.mp4` 2.603 KB, ~2 phút (toàn bộ 10 câu hỏi, gồm cả câu trả lời chậm nhất ~1m25s của fallback LLM).
 
-## 4. Ảnh Docker (bổ sung sau khi build xong)
+## 4. Ảnh Docker
 
 | # | File | Nguồn |
 |---|---|---|
-| 14 | `demo/screenshots/15_docker_ps.png` | render `docker compose ps` |
-| 15 | `demo/screenshots/16_docker_build.png` | render log `docker build` |
-| 16 | `demo/screenshots/17_docker_https.png` | Playwright mở `https://localhost` qua Caddy |
+| 14 | `demo/screenshots/15_docker_ps.png` | render `docker compose ps` — `htk-web` healthy, `htk-caddy` publish 80/443 |
+| 15 | `demo/screenshots/16_docker_build.png` | render log `docker build` (BuildKit, 13/13 bước) |
+| 16 | `demo/screenshots/17_docker_https.png` | Playwright mở `https://localhost` qua Caddy (TLS nội bộ) |
+
+Kết quả kiểm tra: `curl -k https://localhost/_stcore/health` → **200**; `docker compose ps` → `htk-web` `Up (healthy)`, `htk-caddy` `Up`. Stack chạy 2 service đúng như thiết kế (Caddy chờ `web` healthy mới start).
 
 ## 5. Tổng kết
 
