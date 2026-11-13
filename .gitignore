@@ -1,14 +1,43 @@
+# --- Môi trường Python ---
 venv/
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# --- File tạm / backup / IDE / OS ---
+*.bak*
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Log lỗi & dữ liệu sinh ra khi chạy ---
 logs/
 *.log
-data/faiss_index_new_v1/
-models/*.gguf
-.venv/
+chatbot.log
+streamlit_console.log
+*.error.log
+error_log.csv
+coverage/
+htmlcov/
+
+# --- File nặng & bí mật (lấy từ GitHub Releases) ---
 models/
 data/
-faiss_index*
-TEMP/
-.env
 *.gguf
+faiss_index*.zip
+.env
+.env.local
+TEMP/
+
+# --- Thư mục kết quả harness test.py (runtime, không commit) ---
+eval_out/
+eval_out_agg/

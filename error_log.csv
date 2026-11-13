@@ -1,7 +1,0 @@
-timestamp,round,stage,query_id,error_type,message,fix_applied
-2026-11-08 23:10:15,baseline,setup,-,invalid_run_discarded,Lan chay baseline dau tien load nham app.py da sua (SC0-SC7 + rule layer) vi task khoi dong truoc khi swap code; da kill va chay lai tu app.py.bak_round0 nguyen ban,restart baseline tu bak_round0
-2026-11-09 08:02:41,baseline,setup,-,unicode_encode_error,Run baseline resume bi crash UnicodeEncodeError cp1252 khi redirect stdout (ky tu ⏳ trong app.py goc); may da tat truoc do nen baseline chua co ket qua,Chay lai voi python -X utf8; khong sua app.py goc
-2026-11-09 08:02:41,harness,setup,-,key_error_gt,"run_eval.py write_outputs dung m[""gt""] nhung compute_metrics khong tra key nay (se crash khi ghi eval_generation.csv)","Them ""gt"": gt vao dict tra ve cua compute_metrics; smoke-test write_outputs trong thu muc tam thanh cong"
-2026-11-09 08:41:32,baseline,generation,TC4-54,timeout,vuot 60s,"ghi nhan, khong retry trong run nay"
-2026-11-09 08:41:32,baseline,generation,TC4-59,timeout,vuot 60s,"ghi nhan, khong retry trong run nay"
-2026-11-09 08:41:32,baseline,generation,TC5-79,timeout,vuot 60s,"ghi nhan, khong retry trong run nay"
