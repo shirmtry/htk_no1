@@ -49,7 +49,30 @@ venv/Scripts/python.exe scripts/upload_hf.py
 
 hoặc thiết lập GitHub secret `HF_TOKEN` rồi chạy workflow `docker-build-upload.yml` (Actions → Run workflow). Workflow tự build, save, tính SHA256 và upload cả 2 file lên dataset `Huy1223/DPL302m`.
 
-## 4. Dọn file nặng
+## 4. Chạy CI trên GitHub Actions (nhiệm vụ 7)
+
+| Run ID | Commit | Thời lượng | Kết quả | Ghi chú |
+|---|---|---|---|---|
+| `43441173101` | `5c0f0d9` | 8 s | ❌ | `Dockerfile:14 COPY models/ ./models/` → `"/models": not found` (models/ và data/ bị `.gitignore`) |
+| `43441595606` | `cae50ad` | 13 s | ❌ | Cùng lỗi `COPY models/` |
+| `43441734367` | `25926d7` | 4 m 30 s | ❌ (chỉ bước Upload) | Build ✅ · Save ✅ · SHA256 ✅ · Install HF Hub ✅ · **Upload ❌** |
+
+Sửa Dockerfile ở commit `25926d7`: bỏ `COPY data/`, `COPY models/` (thư mục bị gitignore, dữ liệu thật nằm ở GitHub Release và được `docker-compose.yml` mount read-only) → thay bằng `RUN mkdir -p ./data ./models`. Từ đó image build thành công trên runner sạch.
+
+**Lỗi còn lại ở bước Upload:**
+
+```
+httpx2.LocalProtocolError: Illegal header value b'Bearer '
+```
+
+`value b'Bearer '` rỗng ⇒ `${{ secrets.HF_TOKEN }}` không có giá trị. Kiểm tra: `gh api repos/shirmtry/htk_no1/actions/secrets` → `total_count: 0`.
+
+**Cách khắc phục (thao tác trên GitHub, không cần sửa code):**
+1. Repo → Settings → Secrets and variables → Actions → **New repository secret**
+2. Name: `HF_TOKEN` · Secret: token HF có quyền *write* trên `Huy1223/DPL302m`
+3. Actions → *Build and Upload Docker Image to Hugging Face* → **Run workflow**
+
+## 5. Dọn file nặng
 
 | File | Trạng thái |
 |---|---|
